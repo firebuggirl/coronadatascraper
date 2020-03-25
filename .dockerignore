@@ -1,0 +1,14 @@
+node_modules
+site
+.github
+cache
+coronadatascraper-cache
+node_modules
+scripts
+src
+tools
+.editorconfig
+.eslintrc.json
+.gitmodules
+rollup.config.js
+yarn.lock
