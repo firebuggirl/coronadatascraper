@@ -8,7 +8,7 @@ import maintainers from '../../../lib/maintainers.js';
 
 const scraper = {
   county: 'Glenn County',
-  state: 'CA',
+  state: 'iso2:US-CA',
   country: 'iso1:US',
   maintainers: [maintainers.jbencina],
   async scraper() {
@@ -30,7 +30,7 @@ const scraper = {
       $('span:contains("Glenn County COVID-19 Cases")')
         .first()
         .text()
-        .match(/Cases: (\d+)/)[1]
+        .match(/Cases:.*(\d+)/)[1]
     );
     return { cases };
   }

@@ -1,13 +1,14 @@
 import * as fetch from '../../../lib/fetch/index.js';
 import * as parse from '../../../lib/parse.js';
 import maintainers from '../../../lib/maintainers.js';
+import { DeprecatedError } from '../../../lib/errors.js';
 
 // Set county to this if you only have state data, but this isn't the entire state
 // const UNASSIGNED = '(unassigned)';
 
 const scraper = {
   county: 'Solano County',
-  state: 'CA',
+  state: 'iso2:US-CA',
   country: 'iso1:US',
   maintainers: [maintainers.jbencina],
   url: 'http://www.solanocounty.com/depts/ph/coronavirus.asp',
@@ -30,7 +31,7 @@ const scraper = {
       return { cases, deaths };
     },
     '2020-03-24': async function() {
-      throw new Error('Solano County, CA now uses a PDF');
+      throw new DeprecatedError('Solano County, CA now uses a PDF');
     }
   }
 };
