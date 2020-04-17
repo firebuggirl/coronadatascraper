@@ -14,7 +14,7 @@ const scraper = {
   url: 'https://www.sccgov.org/sites/phd/DiseaseInformation/novel-coronavirus/Pages/home.aspx',
   scraper: {
     '0': async function() {
-      const $ = await fetch.page(this.url);
+      const $ = await fetch.page(this, this.url, 'default');
       const scriptData = $('script:contains("Total_Confirmed_Cases")')[0].children[0].data;
       const regExp = /\[.*\]/;
       const data = JSON.parse(regExp.exec(scriptData))[0];
@@ -25,9 +25,9 @@ const scraper = {
         deaths
       };
     },
-    '2020-05-15': async function() {
-      await fetch.page(this.url);
-      throw new DeprecatedError('Sunsetting county scraper');
+    '2020-04-15': async function() {
+      await fetch.page(this, this.url, 'default');
+      throw new DeprecatedError('Sunsetting county scraper, its PowerBI now');
     }
   }
 };
